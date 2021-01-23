@@ -8,6 +8,7 @@ import { ItemListComponent } from './item/item-list/item-list.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-   
+    NgbModule,
+  
     HttpClientModule
   ],
   providers: [],
