@@ -7,16 +7,16 @@
                 
             </div>
             <label for="inputPseudo" class="visually-hidden">用户名</label>
-            <input type="text" id="inputPseudo" class="form-control" placeholder="用户名 / Username"  autofocus>
+            <input type="text" name="inputPseudo" class="form-control" placeholder="用户名 / Username" [(ngModel)]="input.pseudo"  autofocus>
            
             <label for="inputPassword" class="visually-hidden">密码 / Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="密码长度至少8位，必须含有数字&字母" >
+            <input type="password" name="inputPassword" class="form-control" placeholder="密码长度至少8位，必须含有数字&字母" [(ngModel)]="input.password" >
             
             <label for="confirmPassword" class="visually-hidden">确认密码 / Password Confirmation</label>
-            <input type="password" id="confirmPassword" class="form-control" placeholder="请再次输入您的密码" >
+            <input type="password" name="confirmPassword" class="form-control" placeholder="请再次输入您的密码"  [(ngModel)]="passwordVerif" >
             
 
-            <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="onSubmit('signUpForm.value')" >注册</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="onSubmit(input)" >注册</button>
             
             <p class="mt-5 mb-3 text-muted">兑派Depay&copy; 2021</p>
         </form>
