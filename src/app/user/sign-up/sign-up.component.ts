@@ -7,15 +7,8 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  signUpForm;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.signUpForm = this.formBuilder.group(
-      {
-        inputPseudo : '',
-        inputPassword : ''
-      }
-    )
+  constructor() {
    }
 
   ngOnInit(): void {
