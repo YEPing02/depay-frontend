@@ -7,7 +7,7 @@
                 
             </div>
             <label for="inputPseudo" class="visually-hidden">用户名</label>
-            <input type="text" name="inputPseudo" class="form-control" placeholder="用户名 / Username" [(ngModel)]="input.pseudo" (keyup)="checkPseudo()"  autofocus>
+            <input type="text" id="inputPseudo" name="inputPseudo" class="form-control" placeholder="用户名 / Username" [(ngModel)]="input.pseudo" (keyup)="keyUp.next($event)"  autofocus>
             <label for="inputPseudo" class="visually-hidden">{{rslUniquePseudo}}</label>
 
             <label for="inputPassword" class="visually-hidden">密码 / Password</label>
