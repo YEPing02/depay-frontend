@@ -1,8 +1,16 @@
-<div>
-    list
-<div *ngFor="let item of items" >
-    <p>{{item.name}}</p>
-    <p>{{item.description}}</p>
-</div>
-
-</div>
+<div class="container">
+    <div *ngIf="items.length==0">
+        No items
+    </div>
+    <div class="row">
+        <div class="card item-box col-lg-3" *ngFor="let item of items" >
+            <img src="../../../assets/0_wZAcNrIWFFjuJA78.jpg" class="card-img-top item-img">
+            <div class="card-body">
+                <a class="card-title item-name" (click)="onClickItem(item)">{{item.name}}</a>
+                <p class="card-text">{{item.price | currency:'INR'}}</p>
+                <p class="card-text">{{item.pseudo}}</p>
+                <p class="card-text">{{item.description}}</p>
+            </div>
+        </div>
+    </div>
+    

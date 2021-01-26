@@ -1,25 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Item } from './item';
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
   url = 'http://localhost:8080/items';
-items :any[]=[];
-  constructor(private httpClient: HttpClient) { 
+  items: Item[] = [];
+  constructor(private httpClient: HttpClient) {
     this.loadItemList();
   }
 
-  loadItemList(): Observable<any[]> {
-    return  this.httpClient.get<any>(this.url)
+  loadItemList(): Observable<Item[]> {
+   let headers:HttpHeaders=new HttpHeaders().set('Accept','application/hal+json');
+    return this.httpClient.get<Item[]>(this.url,{headers:headers})
   }
 
-  getItems():any[]{
+  getItems(): Item[] {
     return this.items;
   }
 
-  setItems(items:any):void{
-this.items=items;
+  getItemDetail(url: string): Observable<Item> {
+    return this.httpClient.get<Item>(url);
+  }
+  setItems(items: Item[]): void {
+    this.items = items;
   }
 }

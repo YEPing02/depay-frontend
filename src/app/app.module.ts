@@ -10,6 +10,7 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
+import { ItemDetailComponent } from './item/item-detail/item-detail.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {FormsModule} from '@angular/forms';
     AppComponent,
     ItemListComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
