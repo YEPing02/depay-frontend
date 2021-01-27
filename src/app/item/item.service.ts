@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Item } from './item';
+import { AppSetting } from '../shared/AppSetting';
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
-  url = 'http://localhost:8080/items';
+  url:string = AppSetting.ENDPOINT+"/items";
   items: Item[] = [];
   constructor(private httpClient: HttpClient) {
     this.loadItemList();

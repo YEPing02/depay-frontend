@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,24 +13,19 @@ export class SignInComponent implements OnInit {
   alertWindowStatus: string = 'fade';
 
 
-  constructor() { }
+  constructor(private userSerivce:UserService) { }
 
   ngOnInit(): void {
   }
-
-
 
   onClickSignIn() {
     if (this.username === '' || this.password === '') {
       this.showAlert();
     }
     else {
-
+      this.userSerivce.signIn(this.username,this.password).subscribe();
     }
   }
-
-
-
 
   closeAlert() {
     if (this.alertWindowStatus !== 'fade') {
