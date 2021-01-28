@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/Security/auth.service';
 import { UserService } from '../user.service';
 
 @Component({
@@ -12,8 +14,7 @@ export class SignInComponent implements OnInit {
   remember: boolean = false;
   alertWindowStatus: string = 'fade';
 
-
-  constructor(private userSerivce:UserService) { }
+  constructor(private authSerivce: AuthService,private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,9 +24,17 @@ export class SignInComponent implements OnInit {
       this.showAlert();
     }
     else {
-      this.userSerivce.signIn(this.username,this.password).subscribe();
+      this.authSerivce.signIn(this.username, this.password)
+        .subscribe();
     }
   }
+
+  onClickLogOut(){
+    this.authSerivce.signOut().subscribe(res=>{
+      this.router.navigate(['/login']);
+    });
+  }
+
 
   closeAlert() {
     if (this.alertWindowStatus !== 'fade') {

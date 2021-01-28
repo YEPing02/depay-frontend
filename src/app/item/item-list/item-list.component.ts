@@ -9,11 +9,12 @@ import { ItemService } from '../item.service';
   styleUrls: ['./item-list.component.css']
 })
 export class ItemListComponent implements OnInit {
-  items: Item[] = this.itemService.getItems();
+  items: Item[] = [];
+
   constructor(private itemService: ItemService, private router: Router) { }
+
   ngOnInit(): void {
     this.itemService.loadItemList().subscribe(res => {
-      this.itemService.setItems(res);
       this.items = this.itemService.getItems();
     });
   }
@@ -21,7 +22,7 @@ export class ItemListComponent implements OnInit {
   onClickItem(item: Item): void {
     let self = item.links.filter(link => { return link.rel === 'self' })[0].href;
     let id = item.id;
-    this.router.navigate(['/items/detail',id], {
+    this.router.navigate(['/items/detail', id], {
       queryParams: {
         'selfLink': self
       }

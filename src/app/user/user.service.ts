@@ -37,8 +37,4 @@ export class UserService {
     return text1 == text2;
   }
 
-  signIn(username: string, password: string): Observable<User> {
-    var body = {username:username,password:password};
-    return this.httpClient.post<User>(this.url + "/login",body);
-  }
 }

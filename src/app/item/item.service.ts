@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Item } from './item';
 import { AppSetting } from '../shared/AppSetting';
+import { catchError, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
-  url:string = AppSetting.ENDPOINT+"/items";
+  url: string = AppSetting.ENDPOINT + "/items";
   items: Item[] = [];
   constructor(private httpClient: HttpClient) {
     this.loadItemList();
   }
 
   loadItemList(): Observable<Item[]> {
-   let headers:HttpHeaders=new HttpHeaders().set('Accept','application/hal+json');
-    return this.httpClient.get<Item[]>(this.url,{headers:headers})
+    return this.httpClient.get<Item[]>(this.url,).pipe(tap(res => {
+      if (res !== null) {
+        this.setItems(res);
+      }
+    }));
   }
 
   getItems(): Item[] {

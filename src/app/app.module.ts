@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,6 +11,7 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 import { ItemDetailComponent } from './item/item-detail/item-detail.component';
+import { httpInterceptorProviders } from './shared/https-interceptors';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { ItemDetailComponent } from './item/item-detail/item-detail.component';
     HttpClientModule,
     FormsModule
    ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
