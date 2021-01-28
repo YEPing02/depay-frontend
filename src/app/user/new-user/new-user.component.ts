@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ValidatorFn, ValidationErrors, AbstractControl, Validators, AsyncValidatorFn } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/Security/auth.service';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,7 +15,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./new-user.component.css']
 })
 export class NewUserComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router : Router, private authService : AuthService ) { }
   public registerForm = this.formBuilder.group(
     {/*
       Async validators should be placed as the third argument*/
@@ -40,7 +42,13 @@ export class NewUserComponent implements OnInit {
 
   onSubmit(registerData: String) {
     if (this.checkValue()) {
-      this.userService.createUser(registerData);
+      this.userService.createUser(registerData).subscribe(res=>{
+        this.authService.signIn(this.pseudoControl?.value,this.pwdControl?.value).subscribe(
+          res=>{
+            this.router.navigateByUrl("/items");
+          }
+        )
+      });
     }
   }
 

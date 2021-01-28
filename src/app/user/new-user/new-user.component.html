@@ -7,7 +7,7 @@
   <div class="form-inline row"></div>
 
   <label for="inputPseudo" class="visually-hidden">用户名</label>
-  <input formControlName="pseudo" id="inputPseudo" class="form-control"  placeholder="用户名 / Username : 字母开头，允许5-16字节，允许字母数字下划线" required autofocus>
+  <input formControlName="pseudo" id="inputPseudo" class="form-control"  placeholder="用户名 / Username : 字母开头，允许5-16字节，允许字母数字下划线" pattern='^[a-zA-Z][a-zA-Z0-9_]{4,15}$' required autofocus>
   
   <div *ngIf="(pseudoControl?.touched || pseudoControl?.dirty) && pseudoControl?.errors?.usernameExists" class="alert alert-danger" >
       This username is already taken!
