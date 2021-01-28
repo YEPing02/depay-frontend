@@ -1,3 +1,4 @@
+<main class="text-center">
 <form [formGroup]="registerForm" (submit)="onSubmit(registerForm.value)" >
   <!--ReactiveForms 
   class for Bootstrap
@@ -33,9 +34,4 @@
 
 </form>
 <p class="mt-5 mb-3 text-muted">兑派Depay&copy; 2021</p>
-<div>{{registerForm.value|json}}</div>
-<div>err{{registerForm.errors}}</div>
-
-
-<p>Form status: {{ registerForm.status | json }}</p>
-<p>peseudo status: {{ pseudoControl?.pending | json }}</p>
+</main>

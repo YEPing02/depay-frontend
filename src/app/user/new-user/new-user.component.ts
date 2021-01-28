@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, ValidatorFn, ValidationErrors, AbstractControl, ReactiveFormsModule, Validators, AsyncValidatorFn } from '@angular/forms';
+import { ValidatorFn, ValidationErrors, AbstractControl, Validators, AsyncValidatorFn } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { UserService } from '../user.service';
 
 import { Observable } from 'rxjs';
-import { map, first } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 
 @Component({

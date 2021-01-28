@@ -14,7 +14,6 @@ import { ItemDetailComponent } from './item/item-detail/item-detail.component';
 import { httpInterceptorProviders } from './shared/https-interceptors';
 
 import { NewUserComponent } from './user/new-user/new-user.component';
-import { CreateAccountComponent } from './user/create-account/create-account.component';
 
 
 @NgModule({
@@ -24,8 +23,7 @@ import { CreateAccountComponent } from './user/create-account/create-account.com
     SignUpComponent,
     SignInComponent,
     ItemDetailComponent,
-    NewUserComponent,
-    CreateAccountComponent
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
