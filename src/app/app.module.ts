@@ -12,6 +12,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 import { ItemDetailComponent } from './item/item-detail/item-detail.component';
 import { httpInterceptorProviders } from './shared/https-interceptors';
+import { DefaultHeaderComponent } from './shared/layout/default-header/default-header.component';
+import { HomeComponent } from './shared/layout/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MaterialModule } from './material.module';
 
 
 @NgModule({
@@ -20,14 +25,18 @@ import { httpInterceptorProviders } from './shared/https-interceptors';
     ItemListComponent,
     SignUpComponent,
     SignInComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    DefaultHeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
    ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

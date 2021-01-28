@@ -1,0 +1,22 @@
+<div>
+    <mat-toolbar color="tomato">
+        <a href="#">
+            <img src="" width="30" height="30" alt="">
+        </a>
+        <span>Depay</span>
+        <span class="spacer"></span>
+        <mat-form-field>
+            <input type='search' matInput [(ngModel)]="search">
+            <button mat-button  matSuffix mat-icon-button aria-label="Clear" (click)='onClickSearch()'>
+                <mat-icon>search</mat-icon>
+            </button>
+        </mat-form-field>
+        <button mat-icon-button="" aria-label="message">
+            <mat-icon>message</mat-icon>
+        </button>
+
+        <a routerLink="/user">
+            <img src="" width="30" height="30" alt="">
+        </a>
+    </mat-toolbar>
+</div>

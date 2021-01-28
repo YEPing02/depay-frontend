@@ -14,7 +14,7 @@ export class SignInComponent implements OnInit {
   remember: boolean = false;
   alertWindowStatus: string = 'fade';
 
-  constructor(private authSerivce: AuthService,private router: Router) { }
+  constructor(private authSerivce: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -25,12 +25,14 @@ export class SignInComponent implements OnInit {
     }
     else {
       this.authSerivce.signIn(this.username, this.password)
-        .subscribe();
+        .subscribe(res => {
+          this.router.navigateByUrl('items');
+        });
     }
   }
 
-  onClickLogOut(){
-    this.authSerivce.signOut().subscribe(res=>{
+  onClickLogOut() {
+    this.authSerivce.signOut().subscribe(res => {
       this.router.navigate(['/login']);
     });
   }

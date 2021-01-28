@@ -70,6 +70,14 @@ export class AuthService {
     );
   }
 
+  getUserDetail(): Observable<User> {
+    return this.httpClient.get<User>(this.url + "/detail").pipe(
+      tap(res => {
+        this.user = res;
+      })
+    );
+  }
+
   setAccessToken(token: string): void {
     this.access_token = token;
     this.cookies.set('token', token);
