@@ -15,7 +15,6 @@ import { httpInterceptorProviders } from './shared/https-interceptors';
 import { DefaultHeaderComponent } from './shared/layout/default-header/default-header.component';
 import { HomeComponent } from './shared/layout/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MaterialModule } from './material.module';
 
 import { NewUserComponent } from './user/new-user/new-user.component';
