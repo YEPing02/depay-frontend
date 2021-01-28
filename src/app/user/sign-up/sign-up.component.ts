@@ -5,6 +5,7 @@ import { fromEvent, Observable, Subscription,Subject} from 'rxjs';
 import { pluck, debounceTime, throttleTime, distinct, distinctUntilChanged } from 'rxjs/operators';
 
 
+import { FormBuilder, Validators } from '@angular/forms';
 
 
 
@@ -24,7 +25,10 @@ export class SignUpComponent implements OnInit, OnDestroy {
   rslSecurePassword: String = '';
   rslSamePassword: String = 'test';
 
-  public keyUp = new Subject<KeyboardEvent>();
+
+  
+
+   public keyUp = new Subject<KeyboardEvent>();
   private subscription:Subscription;
 
   constructor(private userService: UserService) {
