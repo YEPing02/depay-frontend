@@ -1,10 +1,8 @@
-<body class="text-center">
-
+    
     <main class="form-signup">
         <form id="signUpForm">
             <h1 class="h3 mb-3 fw-normal">注册新用户 / Inscription</h1>
             <div class="form-inline row">
-                
             </div>
             <label for="inputPseudo" class="visually-hidden">用户名</label>
             <input type="text" id="inputPseudo" name="inputPseudo" class="form-control" placeholder="用户名 / Username" [(ngModel)]="input.pseudo" (keyup)="keyUp.next($event)"  autofocus>
@@ -13,6 +11,11 @@
             <label for="inputPassword" class="visually-hidden">密码 / Password</label>
             <input type="password" name="inputPassword" class="form-control" placeholder="密码长度至少8位，必须含有数字&字母" [(ngModel)]="input.password" (keyup)="checkPasswordSecurity()" >
             <label for="inputPassword" class="visually-hidden">{{rslSecurePassword}}</label>
+
+            
+              
+           
+
 
             <label for="confirmPassword" class="visually-hidden">确认密码 / Password Confirmation</label>
             <input type="password" name="confirmPassword" class="form-control" placeholder="请再次输入您的密码"  [(ngModel)]="passwordSeconde" (keyup)="checkSamePassword()">
@@ -23,7 +26,3 @@
             <p class="mt-5 mb-3 text-muted">兑派Depay&copy; 2021</p>
         </form>
     </main>
-
-
-
-</body>

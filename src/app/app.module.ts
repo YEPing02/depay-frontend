@@ -9,9 +9,12 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ItemDetailComponent } from './item/item-detail/item-detail.component';
 import { httpInterceptorProviders } from './shared/https-interceptors';
+
+import { NewUserComponent } from './user/new-user/new-user.component';
+import { CreateAccountComponent } from './user/create-account/create-account.component';
 
 
 @NgModule({
@@ -20,14 +23,17 @@ import { httpInterceptorProviders } from './shared/https-interceptors';
     ItemListComponent,
     SignUpComponent,
     SignInComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    NewUserComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
    ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
