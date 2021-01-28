@@ -29,7 +29,7 @@ import { NewUserComponent } from './user/new-user/new-user.component';
     SignInComponent,
     ItemDetailComponent,
     DefaultHeaderComponent,
-    HomeComponent
+    HomeComponent,
     NewUserComponent
   ],
   imports: [
@@ -39,7 +39,7 @@ import { NewUserComponent } from './user/new-user/new-user.component';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
     ReactiveFormsModule
    ],
   providers: [httpInterceptorProviders],
