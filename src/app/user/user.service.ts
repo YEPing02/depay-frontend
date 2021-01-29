@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { __param } from 'tslib';
 import { AppSetting } from '../shared/AppSetting';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +15,8 @@ export class UserService {
 
   }
 
-  createUser(user: any) {
-    this.httpClient.post(this.url, user).subscribe(
-      function (res) {
-        console.log("Thank you for your joining !");
-      },
-      function (err) {
-        console.error(err)
-      }
-    )
+  createUser(user: any): Observable<User> {
+    return this.httpClient.post<User>(this.url, user);
   }
 
   checkUniquePseudo(pseudo: string): Observable<boolean> {
