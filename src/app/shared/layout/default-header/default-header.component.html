@@ -1,9 +1,8 @@
 <div>
-    <mat-toolbar color="tomato">
-        <a href="#">
-            <img src="" width="30" height="30" alt="">
-        </a>
+    <mat-toolbar color="accent">
+        <div routerLink='/items'>
         <span>Depay</span>
+    </div>
         <span class="spacer"></span>
         <mat-form-field>
             <input type='search' matInput [(ngModel)]="search">
@@ -12,11 +11,11 @@
             </button>
         </mat-form-field>
         <button mat-icon-button="" aria-label="message">
-            <mat-icon>message</mat-icon>
+            <mat-icon matBadge="15" matBadgeColor="warn">message</mat-icon>
         </button>
 
-        <a routerLink="/user">
-            <img src="" width="30" height="30" alt="">
+        <a routerLink="/user" style="border-radius:50%;">
+            <img src="../../../../assets/0_wZAcNrIWFFjuJA78.jpg" style="border-radius:50%;" width="30" height="30" alt="">
         </a>
     </mat-toolbar>
 </div>

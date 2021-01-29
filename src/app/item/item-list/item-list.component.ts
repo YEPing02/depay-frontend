@@ -20,12 +20,8 @@ export class ItemListComponent implements OnInit {
   }
 
   onClickItem(item: Item): void {
-    let self = item.links.filter(link => { return link.rel === 'self' })[0].href;
     let id = item.id;
     this.router.navigate(['/items/detail', id], {
-      queryParams: {
-        'selfLink': self
-      }
     });
   }
 }

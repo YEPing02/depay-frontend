@@ -26,8 +26,8 @@ export class ItemService {
     return this.items;
   }
 
-  getItemDetail(url: string): Observable<Item> {
-    return this.httpClient.get<Item>(url);
+  getItemDetail(itemId: string): Observable<Item> {
+    return this.httpClient.get<Item>(this.url+"/"+itemId);
   }
   setItems(items: Item[]): void {
     this.items = items;

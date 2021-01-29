@@ -13,17 +13,14 @@ export class ItemDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private itemService: ItemService) {
 
-
   }
 
   ngOnInit(): void {
-    let self = this.route.snapshot.queryParams['selfLink'];
+    let id = this.route.snapshot.params['id'];
 
-    this.itemService.getItemDetail(self).subscribe(res => {
+    this.itemService.getItemDetail(id).subscribe(res => {
       this.item = res;
     })
-
-
   }
 
 }
