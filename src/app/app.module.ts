@@ -24,6 +24,8 @@ import { NewItemComponent} from './item/new-item/new-item.component';
 import { registerLocaleData } from '@angular/common';
 import fr from '@angular/common/locales/fr';
 import { NgZorroAntdModule } from './ng-zorro.module';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { fr_FR } from 'ng-zorro-antd/i18n';
 
 registerLocaleData(fr);
 
@@ -51,7 +53,7 @@ registerLocaleData(fr);
     ReactiveFormsModule,
     NgZorroAntdModule
    ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders, { provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
