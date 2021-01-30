@@ -20,6 +20,14 @@ import { MaterialModule } from './material.module';
 import { NewUserComponent } from './user/new-user/new-user.component';
 import { NewItemComponent} from './item/new-item/new-item.component';
 
+
+import { registerLocaleData } from '@angular/common';
+import fr from '@angular/common/locales/fr';
+import { NgZorroAntdModule } from './ng-zorro.module';
+
+registerLocaleData(fr);
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +48,8 @@ import { NewItemComponent} from './item/new-item/new-item.component';
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgZorroAntdModule
    ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

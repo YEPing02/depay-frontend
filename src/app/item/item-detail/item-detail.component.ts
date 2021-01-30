@@ -9,7 +9,10 @@ import { ItemService } from '../item.service';
   styleUrls: ['./item-detail.component.css']
 })
 export class ItemDetailComponent implements OnInit {
-  item: Item = {name:""};
+  item: Item = {};
+  images: any = [1,2,3].map((n) => "../../../assets/0_wZAcNrIWFFjuJA78.jpg");
+  newMessage:string='';
+
 
   constructor(private route: ActivatedRoute, private router: Router, private itemService: ItemService) {
 
@@ -21,6 +24,10 @@ export class ItemDetailComponent implements OnInit {
     this.itemService.getItemDetail(id).subscribe(res => {
       this.item = res;
     })
+  }
+
+  onClickSendNewMessage():void{
+    
   }
 
 }
