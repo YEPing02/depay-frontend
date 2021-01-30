@@ -19,6 +19,14 @@ import { MaterialModule } from './material.module';
 
 import { NewUserComponent } from './user/new-user/new-user.component';
 
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { fr_FR } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import fr from '@angular/common/locales/fr';
+import { NgZorroAntdModule } from './ng-zorro.module';
+
+registerLocaleData(fr);
+
 
 @NgModule({
   declarations: [
@@ -39,9 +47,10 @@ import { NewUserComponent } from './user/new-user/new-user.component';
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgZorroAntdModule
    ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders, { provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
