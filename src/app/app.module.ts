@@ -18,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 
 import { NewUserComponent } from './user/new-user/new-user.component';
-
+import { NewItemComponent} from './item/new-item/new-item.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { NewUserComponent } from './user/new-user/new-user.component';
     ItemDetailComponent,
     DefaultHeaderComponent,
     HomeComponent,
-    NewUserComponent
+    NewUserComponent,
+    NewItemComponent
   ],
   imports: [
     BrowserModule,

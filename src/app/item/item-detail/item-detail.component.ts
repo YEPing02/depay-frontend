@@ -9,7 +9,7 @@ import { ItemService } from '../item.service';
   styleUrls: ['./item-detail.component.css']
 })
 export class ItemDetailComponent implements OnInit {
-  item: Item = new Item();
+  item: Item = {name:""};
 
   constructor(private route: ActivatedRoute, private router: Router, private itemService: ItemService) {
 
