@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Observable, ObservableLike } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from 'src/app/user/user';
+import { UserService } from 'src/app/user/user.service';
 import { AppSetting } from '../AppSetting';
 
 @Injectable({
@@ -13,11 +14,9 @@ import { AppSetting } from '../AppSetting';
 export class AuthService {
   access_token: string = "";
   refresh_token: string = "";
-  user: User = new User();
+  url: string = AppSetting.ENDPOINT + '/users';
 
-  url: string = AppSetting.ENDPOINT + '/user';
-
-  constructor(private httpClient: HttpClient, private cookies: CookieService) {
+  constructor(private httpClient: HttpClient, private cookies: CookieService, private userService: UserService) {
     const cookieToken = cookies.get('token');
     const cookieRefresh = cookies.get('refresh');
     if (cookieToken) {
@@ -54,7 +53,7 @@ export class AuthService {
       this.setRefreshToken(refresh);
     }
     if (res.body) {
-      this.setUser(res.body);
+      this.userService.setUser(res.body);
     }
   }
 
@@ -65,15 +64,6 @@ export class AuthService {
         this.refresh_token = "";
         this.cookies.delete('token');
         this.cookies.delete('refresh');
-        this.user = new User();
-      })
-    );
-  }
-
-  getUserDetail(): Observable<User> {
-    return this.httpClient.get<User>(this.url + "/detail").pipe(
-      tap(res => {
-        this.user = res;
       })
     );
   }
@@ -87,13 +77,6 @@ export class AuthService {
     this.refresh_token = refresh;
     this.cookies.set('refresh', refresh);
   }
-  setUser(user: User): void {
-    this.user = user;
-  }
-
-  getUser(): User {
-    return this.user;
-  }
 
   getAccessToken(): string {
     return this.access_token;
@@ -101,5 +84,4 @@ export class AuthService {
   getRefreshToken(): string {
     return this.refresh_token;
   }
-
 }

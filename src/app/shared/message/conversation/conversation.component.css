@@ -1,0 +1,25 @@
+.conversation-window{
+    width: 400px;
+    height: 600px;
+    border: 1px solid;
+}
+
+.conversation-new-message{
+    width: 400px;
+    height: 200px;
+}
+
+.conversation-background{
+    height: 400px;
+    
+}
+.conversation-message{
+    margin: 10px;
+    background-color: rgb(153, 153, 47);
+}
+.conversation-message-sent{
+    background-color:white
+}
+.conversation-message-received{
+    background-color: burlywood
+}

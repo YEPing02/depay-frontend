@@ -1,1 +1,9 @@
-<p>home works!</p>
+<mat-drawer-container  hasBackdrop=false autosize=true>
+    <mat-drawer-content class="main-content">
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+    <mat-drawer autoFocus=false position='end' #drawer mode="over">
+        <app-contact-list></app-contact-list>
+    </mat-drawer>
+    
+</mat-drawer-container>

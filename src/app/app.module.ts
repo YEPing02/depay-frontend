@@ -24,6 +24,9 @@ import { fr_FR } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import fr from '@angular/common/locales/fr';
 import { NgZorroAntdModule } from './ng-zorro.module';
+import { ContactListComponent } from './shared/message/contact-list/contact-list.component';
+import { ConversationComponent } from './shared/message/conversation/conversation.component';
+import { DefaultFooterComponent } from './shared/layout/default-footer/default-footer.component';
 
 registerLocaleData(fr);
 
@@ -37,7 +40,10 @@ registerLocaleData(fr);
     ItemDetailComponent,
     DefaultHeaderComponent,
     HomeComponent,
-    NewUserComponent
+    NewUserComponent,
+    ContactListComponent,
+    ConversationComponent,
+    DefaultFooterComponent
   ],
   imports: [
     BrowserModule,

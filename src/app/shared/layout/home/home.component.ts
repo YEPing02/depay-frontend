@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MessageService } from '../../message/message.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  @ViewChild("drawer") contactList: any;
+  constructor( private messageService: MessageService) { }
 
   ngOnInit(): void {
+    this.messageService.showContact.subscribe(event => {
+      this.contactList.toggle();
+    })
   }
 
 }

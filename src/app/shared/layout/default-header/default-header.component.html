@@ -1,4 +1,4 @@
-<div>
+<div class="fixed-header">
     <mat-toolbar color="accent">
         <div routerLink='/items'>
         <span>Depay</span>
@@ -10,8 +10,8 @@
                 <mat-icon>search</mat-icon>
             </button>
         </mat-form-field>
-        <button mat-icon-button="" aria-label="message">
-            <mat-icon matBadge="15" matBadgeColor="warn">message</mat-icon>
+        <button mat-icon-button="" aria-label="message" (click)='onClickMessage()'>
+            <mat-icon [matBadge]="unread" *ngIf="unread!==0" matBadgeColor="warn">message</mat-icon>
         </button>
 
         <a routerLink="/user" style="border-radius:50%;">

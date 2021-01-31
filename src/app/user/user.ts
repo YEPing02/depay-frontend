@@ -1,3 +1,8 @@
 export class User{
-    pseudo!: string;
+     id?:string;
+     pseudo?:string;
+     wechatId?:string;
+     email?:string;
+     phone?:string;
+     zone?:string;
 }

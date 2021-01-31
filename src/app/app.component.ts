@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {NgbConfig} from '@ng-bootstrap/ng-bootstrap';
+import { NgbConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import {NgbConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class AppComponent {
   title = 'depay-frontend';
-  constructor(ngbConfig: NgbConfig,public router :Router) {
+  constructor(ngbConfig: NgbConfig, public router: Router) {
     ngbConfig.animation = false;
   }
 }
