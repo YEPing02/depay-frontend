@@ -18,9 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 
 import { NewUserComponent } from './user/new-user/new-user.component';
+import { NewItemComponent} from './item/new-item/new-item.component';
 
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
-import { fr_FR } from 'ng-zorro-antd/i18n';
+
 import { registerLocaleData } from '@angular/common';
 import fr from '@angular/common/locales/fr';
 import { NgZorroAntdModule } from './ng-zorro.module';
@@ -43,7 +43,8 @@ registerLocaleData(fr);
     NewUserComponent,
     ContactListComponent,
     ConversationComponent,
-    DefaultFooterComponent
+    DefaultFooterComponent,
+    NewItemComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +57,7 @@ registerLocaleData(fr);
     ReactiveFormsModule,
     NgZorroAntdModule
    ],
-  providers: [httpInterceptorProviders, { provide: NZ_I18N, useValue: fr_FR }],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
