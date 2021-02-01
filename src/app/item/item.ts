@@ -10,6 +10,6 @@ export class Item{
      pseudo?: string;
      isDeleted?: boolean;
      links?: Link[];
-     photo ?: File
+     imageBase64 ?: string;
 }
 

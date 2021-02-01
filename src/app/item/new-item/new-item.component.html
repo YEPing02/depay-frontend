@@ -1,10 +1,11 @@
 <form class="form-group" #itemForm="ngForm">
-    <input [(ngModel)]="item.name" class="form-control" placeholder="商品名" required>
+    <input [(ngModel)]="item.name" class="form-control" name="name" placeholder="商品名" required>
     <input type="textarea" [(ngModel)]="item.description" name="description" class="form-control" placeholder="商品描述" required>
     <input type="number" [(ngModel)]="item.price"  name="price" min="0" max="999999" class="form-control" placeholder="价格（欧元）" required>
-    <input type="file" [(ngModel)]="item.photo" name="image" accept="image" class="form-control">
+    <input type="file" accept="image/*" class="form-control" name="image" multiple  (change)="transImage($event)">
     <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="itemForm.invalid">发布</button>
 
 </form>
 
 <div>{{item|json}}</div>
+<div>{{itemForm.invalid|json}}</div>
