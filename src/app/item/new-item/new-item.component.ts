@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/shared/Security/auth.service';
+import { AuthService } from 'src/app/shared/security/auth.service';
 import { UserService } from 'src/app/user/user.service';
-import { Item } from '../item';
+import { Item } from '../../shared/data-model/item';
 import { ItemService } from '../item.service';
 
 @Component({

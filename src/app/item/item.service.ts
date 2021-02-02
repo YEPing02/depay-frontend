@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
-import { Item } from './item';
-import { Image } from './image';
+import { Observable, of, } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Item } from '../shared/data-model/item';
+import { Image } from '../shared/data-model/image';
 import { AppSetting } from '../shared/AppSetting';
-import { catchError, tap, map } from 'rxjs/operators';
-import { Text } from '@angular/compiler/src/i18n/i18n_ast';
+import { catchError, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })

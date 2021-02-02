@@ -3,7 +3,7 @@ import { ValidatorFn, ValidationErrors, AbstractControl, Validators, AsyncValida
 import { FormBuilder } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/Security/auth.service';
+import { AuthService } from 'src/app/shared/security/auth.service';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

@@ -1,11 +1,9 @@
-import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { Item } from 'src/app/item/item';
-import { User } from 'src/app/user/user';
+import { Item } from 'src/app/shared/data-model/item';
+import { User } from 'src/app/shared/data-model/user';
 import { UserService } from 'src/app/user/user.service';
-import { AuthService } from '../../Security/auth.service';
-import { Message } from '../message';
+import { Message } from '../../data-model/message';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -19,7 +17,7 @@ export class ConversationComponent implements OnInit {
   objectUser: User = {};
   newMessage: Message = {};
   conversation: Message[] = [];
-  @Input() show:boolean=true;
+  @Input() show: boolean = true;
   item?: Item;
   constructor(
     private userService: UserService,
@@ -28,7 +26,7 @@ export class ConversationComponent implements OnInit {
   ngOnInit(): void {
     this.newMessage.senderId = this.user.id;
     this.newMessage.senderPseudo = this.user.pseudo;
-    if(this.objectUserId){
+    if (this.objectUserId) {
       this.newMessage.receiverId = this.objectUserId;
       this.userService.loadUserDetail(this.objectUserId).subscribe(res => {
         this.objectUser = res;
@@ -38,7 +36,7 @@ export class ConversationComponent implements OnInit {
         this.conversation = res;
       });
     }
-   
+
     if (this.item) {
       this.newMessage.itemId = this.item.id;
     }
@@ -52,17 +50,17 @@ export class ConversationComponent implements OnInit {
     this.messageService.sendMessage(this.newMessage).subscribe(res => {
       this.conversation.push(res);
       this.sendMessage.emit(res);
-      this.newMessage.content="";
+      this.newMessage.content = "";
     });
   }
 
-  @Output() close: EventEmitter<boolean> = new EventEmitter();
+  @Output() close: EventEmitter<any> = new EventEmitter();
 
-  closeConversation():void{
-    this.close.emit(!this.show);
+  closeConversation(): void {
+    this.close.emit(this.newMessage);
   }
-  contentClass(message:Message):string{
-    return message.senderId===this.user.id?"conversation-message-sent":"conversation-message-received";
+  contentClass(message: Message): string {
+    return message.senderId === this.user.id ? "conversation-message-sent" : "conversation-message-received";
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MessageService } from '../../message/message.service';
+import { MessageService } from 'src/app/shared/message/message.service';
 
 @Component({
   selector: 'app-home',

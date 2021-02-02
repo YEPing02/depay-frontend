@@ -1,0 +1,33 @@
+<mat-toolbar color="accent">
+    <div routerLink='/items'>
+        <span>Depay</span>
+    </div>
+    <span class="spacer"></span>
+    <mat-form-field>
+        <input type='search' matInput [(ngModel)]="search">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)='onClickSearch()'>
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+    <button mat-icon-button="" aria-label="message" (click)="onClickMessage()">
+        <mat-icon [matBadge]="unread" *ngIf="unread!==0" matBadgeColor="warn">message</mat-icon>
+    </button>
+
+    <a [matMenuTriggerFor]="menu" style="border-radius:50%;">
+        <img src="../../../../assets/0_wZAcNrIWFFjuJA78.jpg" style="border-radius:50%;" width="30" height="30" alt="">
+    </a>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/user">
+            <mat-icon>face</mat-icon>
+            <span>Profile</span>
+        </button>
+        <button mat-menu-item (click)='onClickLogOut()'>
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>
+<!--contactList-->
+<ng-template #contactList>
+    <app-contact-list (close)="onClickMessage()"></app-contact-list>
+</ng-template>

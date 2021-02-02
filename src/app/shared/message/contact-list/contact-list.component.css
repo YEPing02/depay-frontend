@@ -1,5 +1,14 @@
-.contact-window{
-    border: 1px solid;
-    width: 400px;
-    height: 800px;
+#contactList {
+    width: 300px;
+}
+
+.conversation-avatar {
+    justify-content: center;
+    margin: auto;
+}
+
+.last-message-content {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

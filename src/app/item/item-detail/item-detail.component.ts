@@ -1,14 +1,10 @@
-
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MessageService } from 'src/app/shared/message/message.service';
-import { AuthService } from 'src/app/shared/Security/auth.service';
-import { Message } from '../../shared/message/message';
-import { Image } from '../image';
-import { Item } from '../item';
+import { Item } from '../../shared/data-model/item';
 import { ItemService } from '../item.service';
 
 import { AppSetting } from '../../shared/AppSetting';
+import { AuthService } from '../../shared/security/auth.service';
 
 @Component({
   selector: 'app-item-detail',
@@ -24,10 +20,11 @@ export class ItemDetailComponent implements OnInit {
 
 
 
-  constructor(private route: ActivatedRoute, 
-    private router: Router, 
+
+  constructor(private route: ActivatedRoute,
+    private router: Router,
     private itemService: ItemService,
-    private authService : AuthService) {
+    private authService: AuthService) {
 
   }
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/Security/auth.service';
-import { UserService } from '../user.service';
+import { AuthService } from 'src/app/shared/security/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,7 +11,7 @@ export class SignInComponent implements OnInit {
   username: string = "";
   password: string = "";
   remember: boolean = false;
-  alertWindowStatus: string = 'fade';
+  showAlert: boolean = false;
 
   constructor(private authSerivce: AuthService, private router: Router) { }
 
@@ -21,7 +20,7 @@ export class SignInComponent implements OnInit {
 
   onClickSignIn() {
     if (this.username === '' || this.password === '') {
-      this.showAlert();
+      this.showAlert=true;
     }
     else {
       this.authSerivce.signIn(this.username, this.password)
@@ -31,22 +30,9 @@ export class SignInComponent implements OnInit {
     }
   }
 
-  onClickLogOut() {
-    this.authSerivce.signOut().subscribe(res => {
-      this.router.navigate(['/login']);
-    });
-  }
-
-
   closeAlert() {
-    if (this.alertWindowStatus !== 'fade') {
-      this.alertWindowStatus = 'fade';
-    }
-  }
-
-  showAlert() {
-    if (this.alertWindowStatus !== 'show') {
-      this.alertWindowStatus = 'show';
+    if ( this.showAlert===true) {
+      this.showAlert=false;
     }
   }
 

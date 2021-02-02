@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { __param } from 'tslib';
 import { AppSetting } from '../shared/AppSetting';
-import { User } from './user';
+import { User } from '../shared/data-model/user';
 
 @Injectable({
   providedIn: 'root'
