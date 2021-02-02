@@ -1,28 +1,36 @@
-<div class="container contact-window">
-    <div *ngIf="lastMessages.length==0">
-        No message for you
-    </div>
-
-    <div *ngFor="let lastMessage of lastMessages">
-        <div class="container">
-            <div class="row">
-                <div class="col-3">
-                        <img src="../../../../assets/0_wZAcNrIWFFjuJA78.jpg" style="border-radius:50%;" width="50"
-                            height="50" alt="">
-                </div>
-
-                <div class="col-9" (click)="onClickConversation(lastMessage)">
-                    <h3>{{user.id===lastMessage.senderId?lastMessage.receiverPseudo:lastMessage.senderPseudo}}</h3>
-                    <p>{{user.id===lastMessage.senderId?'我':lastMessage.senderPseudo}}:{{lastMessage.content}}</p>
-                </div>
-            </div>
+<div #contactList>
+    <mat-card>
+        <div style="justify-content: left center;">
+            <button mat-icon-button color="accent" aria-label="Close message box" (click)='onClickClose()'>
+                <mat-icon>close</mat-icon>
+            </button>
         </div>
         <mat-divider></mat-divider>
-    </div>
+        <div *ngIf="lastMessages.length==0">
+            No message for you
+        </div>
+        <div *ngFor="let lastMessage of lastMessages">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3 conversation-avatar">
+                        <img src="../../../../assets/0_wZAcNrIWFFjuJA78.jpg" style="border-radius:50%;" width="50"
+                            height="50" alt="">
+                    </div>
+                    <div style="text-overflow: ellipsis;" class="col-9" (click)="onClickConversation(lastMessage)">
+                        <h3>{{user.id===lastMessage.senderId?lastMessage.receiverPseudo:lastMessage.senderPseudo}}</h3>
+                        <p class="last-message-content">
+                            {{user.id===lastMessage.senderId?'我':lastMessage.senderPseudo}}:{{lastMessage.content}}</p>
+                    </div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-card>
 </div>
-<app-conversation *ngIf="showConversation" [user]='user' [show]="showConversation" 
-[objectUserId]='user.id===lastOfConversation.senderId?lastOfConversation.receiverId:lastOfConversation.senderId'
- (close)='showConversation=$event'
- (sendMessage)='updateConversation($event)'></app-conversation>
-
- 
+<!--conversation-->
+<ng-template #conversation>
+    <app-conversation [user]='user' (close)="closeConversation()"
+        [objectUserId]='user.id===lastOfConversation.senderId?lastOfConversation.receiverId:lastOfConversation.senderId'
+        (sendMessage)='updateConversation($event)'>
+    </app-conversation>
+</ng-template>

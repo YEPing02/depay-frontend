@@ -4,7 +4,7 @@ import {
 } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import { AuthService } from '../Security/auth.service';
+import { AuthService } from '../security/auth.service';
 import { catchError, mergeMap, switchMap, take, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 

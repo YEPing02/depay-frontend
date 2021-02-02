@@ -1,13 +1,12 @@
-<div class="container conversation-window">
+<mat-card class="conversation-window">
     <button mat-icon-button="" aria-label="close" (click)="closeConversation()">
-        <mat-icon matBadgeColor="warn">close</mat-icon>
+        <mat-icon>close</mat-icon>
     </button>
     <div class="conversation-background">
         <div *ngFor="let message of conversation" class="conversation-message">
-            <div  [class]="contentClass(message)">
+            <div [class]="contentClass(message)">
                 {{message.content}}
             </div>
-           
         </div>
     </div>
     <mat-divider></mat-divider>
@@ -21,4 +20,4 @@
             </button>
         </mat-form-field>
     </div>
-</div>
+</mat-card>

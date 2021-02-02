@@ -1,10 +1,9 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { getSourceFileOrError } from '@angular/compiler-cli/src/ngtsc/file_system';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { Observable, ObservableLike } from 'rxjs';
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { User } from 'src/app/user/user';
+import { User } from 'src/app/shared/data-model/user';
 import { UserService } from 'src/app/user/user.service';
 import { AppSetting } from '../AppSetting';
 

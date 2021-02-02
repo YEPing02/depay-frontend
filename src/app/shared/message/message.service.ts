@@ -4,8 +4,7 @@ import { forkJoin, Observable, of, Subject } from 'rxjs';
 import { mergeMap, tap } from 'rxjs/operators';
 import { UserService } from 'src/app/user/user.service';
 import { AppSetting } from '../AppSetting';
-import { AuthService } from '../Security/auth.service';
-import { Message } from './message';
+import { Message } from '../data-model/message';
 
 @Injectable({
   providedIn: 'root'

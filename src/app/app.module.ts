@@ -1,4 +1,4 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,16 +9,16 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItemDetailComponent } from './item/item-detail/item-detail.component';
-import { httpInterceptorProviders } from './shared/https-interceptors';
-import { DefaultHeaderComponent } from './shared/layout/default-header/default-header.component';
-import { HomeComponent } from './shared/layout/home/home.component';
+import { httpInterceptorProviders } from './shared/http-interceptors';
+import { DefaultHeaderComponent } from './layout/default-header/default-header.component';
+import { HomeComponent } from './layout/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 
 import { NewUserComponent } from './user/new-user/new-user.component';
-import { NewItemComponent} from './item/new-item/new-item.component';
+import { NewItemComponent } from './item/new-item/new-item.component';
 
 
 import { registerLocaleData } from '@angular/common';
@@ -26,7 +26,7 @@ import fr from '@angular/common/locales/fr';
 import { NgZorroAntdModule } from './ng-zorro.module';
 import { ContactListComponent } from './shared/message/contact-list/contact-list.component';
 import { ConversationComponent } from './shared/message/conversation/conversation.component';
-import { DefaultFooterComponent } from './shared/layout/default-footer/default-footer.component';
+import { DefaultFooterComponent } from './layout/default-footer/default-footer.component';
 
 registerLocaleData(fr);
 
@@ -56,7 +56,7 @@ registerLocaleData(fr);
     MaterialModule,
     ReactiveFormsModule,
     NgZorroAntdModule
-   ],
+  ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })

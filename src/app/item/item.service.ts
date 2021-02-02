@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
-import { Item } from './item';
-import {Image} from './image';
+import { Observable, } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Item } from '../shared/data-model/item';
+import { Image } from '../shared/data-model/image';
 import { AppSetting } from '../shared/AppSetting';
-import { catchError, tap } from 'rxjs/operators';
-import { ItemListComponent } from './item-list/item-list.component';
+import { tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,29 +28,29 @@ export class ItemService {
   }
 
   getItemDetail(itemId: string): Observable<Item> {
-    return this.httpClient.get<Item>(this.url+"/"+itemId);
+    return this.httpClient.get<Item>(this.url + "/" + itemId);
   }
   setItems(items: Item[]): void {
     this.items = items;
   }
 
-  addItem(item:Item):Observable<Item>{
+  addItem(item: Item): Observable<Item> {
     return this.httpClient.post<Item>(this.url, item);
   }
 
-  addPhoto(item:Item, imageCode: string) : Observable<Image>{
-    const image :Image = {
-      itemId : item.id,
-      imageBase64 : imageCode
+  addPhoto(item: Item, imageCode: string): Observable<Image> {
+    const image: Image = {
+      itemId: item.id,
+      imageBase64: imageCode
     }
-    return this.httpClient.post<Image>(this.url+"/"+item.id+"/images",image);
+    return this.httpClient.post<Image>(this.url + "/" + item.id + "/images", image);
 
   }
 
-  getCoverImage(item : Item) :Observable<string>{
-    return this.httpClient.get<string>(this.url+"/"+item.id+"/images/first").pipe(tap(
-      res=>{
-        item.imageBase64=res;
+  getCoverImage(item: Item): Observable<string> {
+    return this.httpClient.get<string>(this.url + "/" + item.id + "/images/first").pipe(tap(
+      res => {
+        item.imageBase64 = res;
       }
     ));
   }

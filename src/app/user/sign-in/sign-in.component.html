@@ -1,24 +1,25 @@
 <div class="container">
- 
-    <div class="px-4 py-3">
-        <div class="alert alert-danger alert-dismissible " [class]='alertWindowStatus' role="alert">
-            Your username or password is not correct
+    <mat-card>
+        <div *ngIf="showAlert" class="alert alert-danger alert-dismissible " role="alert">
+            Username or password is not correct
             <button type="button" (click)='closeAlert()' class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">&times;</span>
             </button>
-          </div>
+        </div>
         <div class="form-group">
             <label for="username">Email address</label>
-            <input [(ngModel)]="username" (change)='closeAlert()' type="email" class="form-control" id="username" autofocus>
+            <input [(ngModel)]="username" (change)='closeAlert()' type="email" class="form-control" id="username"
+                autofocus>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input [(ngModel)]="password" (change)='closeAlert()' type="password" class="form-control" placeholder="" id="password" >
+            <input [(ngModel)]="password" (change)='closeAlert()' type="password" class="form-control" placeholder=""
+                id="password">
         </div>
-        <button class="btn btn-primary" (click)='onClickSignIn()'>Sign in</button>
-    </div>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" routerLink='/signup'>New around here? Sign up</a>
-    <a class="dropdown-item" href="#">Forgot password?</a>
-    <button (click)='onClickLogOut()'>log out</button>
+        <button class="signin-btn" mat-raised-button color='accent' (click)='onClickSignIn()'>Sign in</button>
+        
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" routerLink='/newuser'>New around here? Sign up</a>
+        <a class="dropdown-item" href="#">Forgot password?</a>
+    </mat-card>
 </div>
