@@ -1,5 +1,4 @@
-
-  .item-images{
-    height: 400px;
-    width: 400px;
-  }
+.img-box {
+  width: 200px;
+  height: 250px;
+}

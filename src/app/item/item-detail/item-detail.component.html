@@ -4,7 +4,7 @@
         <div class="item-images">
             <ngb-carousel *ngIf="images">
                 <ng-template ngbSlide *ngFor="let image of images">
-                    <div class="picsum-img-wrapper">
+                    <div class="picsum-img-wrapper img-box d-flex align-items-center">
                         <img nz-image [nzSrc]="image" class="item-images" alt="Random first slide">
                     </div>
                 </ng-template>

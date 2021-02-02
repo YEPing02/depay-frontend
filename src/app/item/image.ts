@@ -1,7 +1,7 @@
 import { Link } from "../shared/link";
 
-export class Image{
+export interface Image{
      id?: string;
      itemId?: string;
-     imageBase64?: string;
+     imageBase64: string;
 }

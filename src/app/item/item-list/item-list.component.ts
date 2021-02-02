@@ -17,7 +17,12 @@ export class ItemListComponent implements OnInit {
     this.itemService.loadItemList().subscribe(res => {
       this.items = this.itemService.getItems();
       for (let item of this.items){
-        this.itemService.getCoverImage(item).subscribe(res=>console.log(res));
+      this.itemService.getCoverImage(item).subscribe(res=>
+        {
+          console.log(res)
+          item.imageBase64=res;
+        }
+        );
       }
     });
   }

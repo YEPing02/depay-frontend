@@ -1,11 +1,18 @@
-.item-box{
-    width: 200px;
-    height: 350px;
-}
-.item-box:hover{
-    border: 2px solid black;
-}
-.item-name:hover{
-    cursor: pointer
+.item-box {
+  width: 200px;
+  height: 350px;
 }
 
+.item-box:hover {
+  border: 2px solid black;
+}
+
+.item-name:hover {
+  cursor: pointer
+}
+
+.img-box {
+  width: 100%;
+  height: 30%;
+
+}
