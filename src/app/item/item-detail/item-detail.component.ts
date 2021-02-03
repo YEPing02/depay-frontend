@@ -14,9 +14,9 @@ import { AuthService } from '../../shared/security/auth.service';
 export class ItemDetailComponent implements OnInit {
   item: Item = new Item();
   //images: any = [1, 2, 3].map((n) => "../../../assets/0_wZAcNrIWFFjuJA78.jpg");
-  
-  
-  images : string[]= [AppSetting.DEFAULTIMAGE];
+
+
+  images: string[] = [AppSetting.DEFAULT_IMAGE];
 
 
 
@@ -33,16 +33,16 @@ export class ItemDetailComponent implements OnInit {
     this.itemService.getItemDetail(id).subscribe(res => {
       this.item = res;
     });
-    
-    this.itemService.getAllImage(id).subscribe(itemImages=>{
+
+    this.itemService.getAllImagesOfItem(id).subscribe(itemImages => {
       console.log(itemImages);
       this.images = itemImages;
 
-      });
-    
+    });
 
-    
-    
+
+
+
   }
 
 

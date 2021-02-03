@@ -10,7 +10,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class ItemService {
   url: string = AppSetting.ENDPOINT + "/items";
-  defaultImage : string = AppSetting.DEFAULTIMAGE;
+  defaultImage: string = AppSetting.DEFAULT_IMAGE;
   items: Item[] = [];
   constructor(private httpClient: HttpClient) {
     this.loadItemList();
@@ -45,7 +45,6 @@ export class ItemService {
       imageBase64: imageCode
     }
     return this.httpClient.post<Image>(this.url + "/" + item.id + "/images", image);
-
   }
 
   getCoverImage(item: Item): Observable<string> {
@@ -56,9 +55,8 @@ export class ItemService {
       ))
   }
 
-
-  getAllImage(id: string): Observable<any> {
-    return this.httpClient.get(this.url + "/" + id + "/images");
+  getAllImagesOfItem(itemId: string): Observable<string[]> {
+    return this.httpClient.get<string[]>(this.url + "/" + itemId + "/images");
   }
 
 }
