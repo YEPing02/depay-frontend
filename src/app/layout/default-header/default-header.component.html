@@ -3,6 +3,11 @@
         <span>Depay</span>
     </div>
     <span class="spacer"></span>
+    <div routerLink='/newitem'>
+        <button class="mat-button btn-light">发布商品</button>
+    </div>
+
+    <span class="spacer"></span>
     <mat-form-field>
         <input type='search' matInput [(ngModel)]="search">
         <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)='onClickSearch()'>
