@@ -5,6 +5,8 @@ import { Item } from '../shared/data-model/item';
 import { Image } from '../shared/data-model/image';
 import { AppSetting } from '../shared/AppSetting';
 import { catchError, tap } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -46,6 +48,24 @@ export class ItemService {
     }
     return this.httpClient.post<Image>(this.url + "/" + item.id + "/images", image);
   }
+
+  saveImages(item: Item): Observable<any> {
+    let uploadImageObservables: Observable<Image>[] = [];
+
+    if (item.imageBase64 != undefined) {
+      for (let anImage of item.imageBase64) {
+        const img: Image = {
+          itemId: item.id,
+          imageBase64: anImage
+        }
+        uploadImageObservables.push(this.httpClient.post<Image>(this.url + "/" + item.id + "/images", img));
+      }
+
+    }
+
+    return forkJoin(uploadImageObservables);
+  }
+
 
   getCoverImage(item: Item): Observable<string> {
     return this.httpClient.get(this.url + "/" + item.id + "/images/first", { responseType: 'text' }).pipe(

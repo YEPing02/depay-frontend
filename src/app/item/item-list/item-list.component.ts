@@ -16,11 +16,9 @@ export class ItemListComponent implements OnInit {
   ngOnInit(): void {
     this.itemService.loadItemList().subscribe(res => {
       this.items = this.itemService.getItems();
-      for (let item of this.items){
-      this.itemService.getCoverImage(item).subscribe(res=>
-        {
-          console.log(res)
-          item.imageBase64=res;
+      for (let item of this.items) {
+        this.itemService.getCoverImage(item).subscribe(res => {
+          item.coverImage = res;
         }
         );
       }
