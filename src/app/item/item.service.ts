@@ -5,12 +5,14 @@ import { Item } from '../shared/data-model/item';
 import { Image } from '../shared/data-model/image';
 import { AppSetting } from '../shared/AppSetting';
 import { catchError, tap } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
   url: string = AppSetting.ENDPOINT + "/items";
-  defaultImage : string = AppSetting.DEFAULTIMAGE;
+  defaultImage: string = AppSetting.DEFAULT_IMAGE;
   items: Item[] = [];
   constructor(private httpClient: HttpClient) {
     this.loadItemList();
@@ -45,8 +47,25 @@ export class ItemService {
       imageBase64: imageCode
     }
     return this.httpClient.post<Image>(this.url + "/" + item.id + "/images", image);
-
   }
+
+  saveImages(item: Item): Observable<any> {
+    let uploadImageObservables: Observable<Image>[] = [];
+
+    if (item.imageBase64 != undefined) {
+      for (let anImage of item.imageBase64) {
+        const img: Image = {
+          itemId: item.id,
+          imageBase64: anImage
+        }
+        uploadImageObservables.push(this.httpClient.post<Image>(this.url + "/" + item.id + "/images", img));
+      }
+
+    }
+
+    return forkJoin(uploadImageObservables);
+  }
+
 
   getCoverImage(item: Item): Observable<string> {
     return this.httpClient.get(this.url + "/" + item.id + "/images/first", { responseType: 'text' }).pipe(
@@ -56,9 +75,8 @@ export class ItemService {
       ))
   }
 
-
-  getAllImage(id: string): Observable<any> {
-    return this.httpClient.get(this.url + "/" + id + "/images");
+  getAllImagesOfItem(itemId: string): Observable<string[]> {
+    return this.httpClient.get<string[]>(this.url + "/" + itemId + "/images");
   }
 
 }

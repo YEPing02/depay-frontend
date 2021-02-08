@@ -1,4 +1,4 @@
-export class Item{
+export class Item {
      id?: string;
      name?: string;
      description?: string;
@@ -7,6 +7,7 @@ export class Item{
      userId?: string;
      pseudo?: string;
      isDeleted?: boolean;
-     imageBase64 ?: string;
+     imageBase64?: string[];
+     coverImage?: string;
 }
 
