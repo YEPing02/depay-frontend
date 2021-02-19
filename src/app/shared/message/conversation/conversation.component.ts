@@ -1,9 +1,11 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Item } from 'src/app/shared/data-model/item';
 import { User } from 'src/app/shared/data-model/user';
 import { UserService } from 'src/app/user/user.service';
 import { Message } from '../../data-model/message';
+import { WebsocketService } from '../../websocket/websocket.service';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -17,11 +19,15 @@ export class ConversationComponent implements OnInit {
   objectUser: User = {};
   newMessage: Message = {};
   conversation: Message[] = [];
+
+  wsMessage: any[] = [];
+  private topicSubscription!: Subscription;
   @Input() show: boolean = true;
   item?: Item;
   constructor(
     private userService: UserService,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private websocketService: WebsocketService) { }
 
   ngOnInit(): void {
     this.newMessage.senderId = this.user.id;
@@ -36,13 +42,14 @@ export class ConversationComponent implements OnInit {
         this.conversation = res;
       });
     }
-
     if (this.item) {
       this.newMessage.itemId = this.item.id;
     }
     if (this.objectUser.id) {
-
     }
+
+    this.topicSubscription = this.websocketService.getPrivateMessageChannel()
+      .subscribe(res => { this.conversation.push(res) });
   }
   @Output() sendMessage: EventEmitter<Message> = new EventEmitter();
 
@@ -50,8 +57,15 @@ export class ConversationComponent implements OnInit {
     this.messageService.sendMessage(this.newMessage).subscribe(res => {
       this.conversation.push(res);
       this.sendMessage.emit(res);
+      this.websocketService.sendMessage(this.newMessage);
       this.newMessage.content = "";
     });
+  }
+
+  ngOnDestroy() {
+    if (!this.topicSubscription.closed) {
+      this.topicSubscription.unsubscribe();
+    }
   }
 
   @Output() close: EventEmitter<any> = new EventEmitter();

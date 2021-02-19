@@ -27,6 +27,7 @@ import { NgZorroAntdModule } from './ng-zorro.module';
 import { ContactListComponent } from './shared/message/contact-list/contact-list.component';
 import { ConversationComponent } from './shared/message/conversation/conversation.component';
 import { DefaultFooterComponent } from './layout/default-footer/default-footer.component';
+import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
 
 registerLocaleData(fr);
 
@@ -55,9 +56,12 @@ registerLocaleData(fr);
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders,
+    {
+      provide: RxStompService
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

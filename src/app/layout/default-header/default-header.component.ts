@@ -2,8 +2,10 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { MessageService } from 'src/app/shared/message/message.service';
 import { AuthService } from 'src/app/shared/security/auth.service';
+import { WebsocketService } from 'src/app/shared/websocket/websocket.service';
 
 @Component({
   selector: 'app-default-header',
@@ -16,7 +18,14 @@ export class DefaultHeaderComponent implements OnInit {
   search: string = "";
   unread: number = 0;
   showContact: boolean = false;
-  constructor(private overlay: Overlay, private viewContainerRef: ViewContainerRef, public router: Router, private messageService: MessageService, private authSerivce: AuthService) { }
+  private topicSubscription!: Subscription;
+
+  constructor(private overlay: Overlay,
+    private viewContainerRef: ViewContainerRef,
+    public router: Router,
+    private messageService: MessageService,
+    private authSerivce: AuthService,
+    private websocketService: WebsocketService) { }
 
   ngOnInit(): void {
     this.messageService.loadUnreadNumber().subscribe(res => {
@@ -24,6 +33,13 @@ export class DefaultHeaderComponent implements OnInit {
     });
     const overlayStrat = this.overlay.position().global().bottom().right();
     this.overlayRef = this.overlay.create({ positionStrategy: overlayStrat });
+
+    this.topicSubscription = this.websocketService.getPrivateMessageChannel()
+      .subscribe(res => {
+        if (!res.read) {
+          this.unread++;
+        }
+      });
   }
 
   onClickMessage() {
