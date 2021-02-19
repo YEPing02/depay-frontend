@@ -15,6 +15,8 @@ const routes: Routes = [
   { path: 'user', component: UserDetailComponent },
   { path: "newuser", component: NewUserComponent },
   { path: "newitem", component: NewItemComponent },
+
+  { path: '', redirectTo: '/items', pathMatch: 'full' },
 ]
 
 @NgModule({
